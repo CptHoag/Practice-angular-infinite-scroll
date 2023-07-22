@@ -3,7 +3,14 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@angular/material",
+      "node_modules/@angular",
+    ],
+    "types": [
+      "node",
+    ],
   },
   "files": [
     "src/main.ts"
