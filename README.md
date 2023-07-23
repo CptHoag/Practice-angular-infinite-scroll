@@ -1,7 +1,11 @@
 # Practice angular ngx-infinite-scroll
 
-Article
+Article  
 <https://www.freakyjolly.com/how-to-add-infinite-scroll-on-data-list-in-angular/>
+
+> ◆ Version  
+> Angular CLI: 16.1.5  
+> Node: 18.17.0
 
 ## Step 1: Install ngx-infinite-scroll
 
