@@ -1,27 +1,70 @@
-# MyApp
+# MyApp - Practice angular ngx-infinite-scroll
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.5.
+<https://www.freakyjolly.com/how-to-add-infinite-scroll-on-data-list-in-angular/>
 
-## Development server
+## Step 1: Install ngx-infinite-scroll
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+npm i ngx-infinite-scroll
 
-## Code scaffolding
+## Import InfiniteScrollModule, HttpClientModule
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-## Build
+import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, HttpClientModule, InfiniteScrollModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
 
-## Running unit tests
+## Step 3: Add the infinite scroll directive to your component
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```html
+<div class="scrollable-content" style="height: 100px;overflow: auto;" 
+    infiniteScroll 
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="500"
+    [scrollWindow]="false" 
+    (scrolled)="onScroll()">
+    <div *ngFor="let item of items">{{ item.name }}</div>
+</div>
+```
 
-## Running end-to-end tests
+## Step 4: Create a service to fetch data
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+data.service.ts
 
-## Further help
+## Step 5: Install json-server and create a JSON file
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```json
+npm install -g json-server
+```
+
+```json
+{
+  "items": [
+    { "id": 1, "name": "Item 1" },
+    { "id": 2, "name": "Item 2" },
+    { "id": 3, "name": "Item 3" },
+    { "id": 4, "name": "Item 4" },
+    { "id": 5, "name": "Item 5" },
+    { "id": 6, "name": "Item 6" },
+    { "id": 7, "name": "Item 7" },
+    { "id": 8, "name": "Item 8" },
+    { "id": 9, "name": "Item 9" },
+    { "id": 10, "name": "Item 10" }
+  ]
+}
+```
+
+```json
+json-server --watch data.json
+```

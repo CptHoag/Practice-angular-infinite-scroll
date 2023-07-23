@@ -6,6 +6,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonToggleModule,
     MatIconModule,
     MatInputModule,
+    MatListModule,
   ]
 })
 export class AppMaterialModule { }

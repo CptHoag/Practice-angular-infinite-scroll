@@ -1,7 +1,20 @@
-<p>xyz works!</p>
-<div>
-  <mat-slide-toggle>Toggle me!</mat-slide-toggle>
-</div>
-<div>
-  <button mat-flat-button color="primary">Primary</button>
+<div class="xyz-container">
+  <div class="title">
+    XYZ COMPONENT~
+  </div>
+  <div class="mt-3">■ Normal div</div>
+  <div class="scrollable-content m-2" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500"
+    [scrollWindow]="false" (scrolled)="onScroll()">
+    <div class="item text-ellipsis" *ngFor="let item of items">{{ item.name }}</div>
+  </div>
+
+  <div class="mt-3">■ Use mat-list</div>
+  <div class="m-list-container m-2">
+    <mat-list role="list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="500"
+      [scrollWindow]="false" (scrolled)="onScroll()">
+      <mat-list-item class="item" role="listitem" *ngFor="let item of items">
+        <span>{{ item.name }}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
 </div>

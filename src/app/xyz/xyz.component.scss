@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'Ellipsis';
+  src: local('Arial');
+  unicode-range: U+2026;
+}
+
+.xyz-container {
+  font-family: Ellipsis, "Meiryo UI", Meiryo, メイリオ, Osaka, "MS PGothic", arial, helvetica, sans-serif;
+
+  .title {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .scrollable-content {
+    border: 2px solid #ddd;
+    background-color: #ddd;
+    padding: 0 10px;
+    height: 200px;
+    width: 250px;
+    overflow: auto;
+
+    .item {
+      background-color: #fff;
+      color: #333;
+      border: 1px solid #f2f2f2;
+      min-height: 48px;
+      line-height: 48px;
+      padding: 0 1rem;
+
+      &:not(:first-child) {
+        margin-top: 0.25rem;
+      }
+    }
+  }
+
+  .m-list-container > mat-list {
+    border: 2px solid #ddd;
+    background-color: #ddd;
+    padding: 0 10px;
+    height: 200px;
+    width: 250px;
+    overflow: auto;
+
+    .item {
+      background-color: #fff;
+      color: #333;
+      border: 1px solid #f2f2f2;
+
+      &:not(:first-child) {
+        margin-top: 0.25rem;
+      }
+    }
+  }
+
+  .text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
