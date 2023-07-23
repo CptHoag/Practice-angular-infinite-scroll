@@ -1,10 +1,13 @@
-# MyApp - Practice angular ngx-infinite-scroll
+# Practice angular ngx-infinite-scroll
 
+Article
 <https://www.freakyjolly.com/how-to-add-infinite-scroll-on-data-list-in-angular/>
 
 ## Step 1: Install ngx-infinite-scroll
 
+```text
 npm i ngx-infinite-scroll
+```
 
 ## Import InfiniteScrollModule, HttpClientModule
 
@@ -40,11 +43,32 @@ export class AppModule {}
 
 ## Step 4: Create a service to fetch data
 
-data.service.ts
+```ts
+// data.service.ts
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class DataService {
+  private apiUrl = 'http://localhost:3000/items';
+
+  constructor(private http: HttpClient) {}
+
+  getItems(page: number, pageSize: number) {
+    const skip = (page - 1) * pageSize;
+    const take = pageSize;
+
+    return this.http.get<any[]>(`${this.apiUrl}?_start=${skip}&_limit=${take}`);
+  }
+}
+```
 
 ## Step 5: Install json-server and create a JSON file
 
-```json
+```text
 npm install -g json-server
 ```
 
@@ -65,6 +89,6 @@ npm install -g json-server
 }
 ```
 
-```json
+```text
 json-server --watch data.json
 ```
